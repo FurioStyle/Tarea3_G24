@@ -139,5 +139,25 @@ public class Expendedor {
         
         return monedaVuelto.getVuelto();
     }
+    public int getStockCoca() {
+        return coca.size();
+    }
+
+    public int getStockSprite() {
+        return sprite.size();
+    }
+
+    public int getStockFanta() {
+        return fanta.size();
+    }
+
+    public int getStockSuper8() {
+        return super8.size();
+    }
+
+    public int getStockSnickers() {
+        return snickers.size();
+    }
+
 }
 

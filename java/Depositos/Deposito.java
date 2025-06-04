@@ -53,4 +53,9 @@ public class Deposito<T> {
             return null;
         }
     }
+
+    public int size() {
+        return deposito.size();
+    }
+
 }
