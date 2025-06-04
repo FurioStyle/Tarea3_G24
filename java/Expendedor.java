@@ -78,23 +78,23 @@ public class Expendedor {
             int precio = 0;
             switch (cual){
                 case 1:
-                    productoSeleccionado = coca.getElemento();
+                    productoSeleccionado = coca.getProducto();
                     precio = ProductoEnum.COCA_COLA.getPrecio();
                     break;
                 case 2:
-                    productoSeleccionado = sprite.getElemento();
+                    productoSeleccionado = sprite.getProducto();
                     precio = ProductoEnum.SPRITE.getPrecio();
                     break;
                 case 3:
-                    productoSeleccionado = fanta.getElemento();
+                    productoSeleccionado = fanta.getProducto();
                     precio = ProductoEnum.FANTA.getPrecio();
                     break;
                 case 4:
-                    productoSeleccionado = super8.getElemento();
+                    productoSeleccionado = super8.getProducto();
                     precio = ProductoEnum.SUPER8.getPrecio();
                     break;
                 case 5:
-                    productoSeleccionado = snickers.getElemento();
+                    productoSeleccionado = snickers.getProducto();
                     precio = ProductoEnum.SNICKERS.getPrecio();
                     break;
             }
