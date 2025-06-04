@@ -26,32 +26,39 @@ public class Comprador{
     public Comprador(Moneda m, int cual) throws NoHayProductoException, PagoIncorrectoException {
         Expendedor exp = new Expendedor(6);
         Producto p = null;
-        switch (cual){
-            case 1:
-                p = exp.comprarProducto(m, 1);
-                break;
-            case 2:
-                p = exp.comprarProducto(m, 2);
-                break;
-            case 3:
-                p = exp.comprarProducto(m, 3);
-                break;
-            case 4:
-                p = exp.comprarProducto(m, 4);
-                break;
-            case 5:
-                p = exp.comprarProducto(m, 5);
-                break;
-            default:
-                throw new NoHayProductoException("Numero Invalido");
-        }
-        if (p != null) {
-            this.sonido = p.consumir();
+        try {
+            switch (cual) {
+                case 1:
+                    p = exp.comprarProducto(m, 1);
+                    break;
+                case 2:
+                    p = exp.comprarProducto(m, 2);
+                    break;
+                case 3:
+                    p = exp.comprarProducto(m, 3);
+                    break;
+                case 4:
+                    p = exp.comprarProducto(m, 4);
+                    break;
+                case 5:
+                    p = exp.comprarProducto(m, 5);
+                    break;
+                default:
+                    throw new NoHayProductoException("Numero de producto invalido");
+            }
+            if (p != null) {
+                this.sonido = p.consumir();
+            }
+        } catch (NoHayProductoException e){
+            System.out.println("Error de Producto: " + e.getMessage());
+        } catch (PagoIncorrectoException e){
+            System.out.println("Error de pago: " + e.getMessage());
         }
         Moneda moneda;
         while ((moneda = exp.getVuelto()) != null) {
             this.vuelto += moneda.getValor();
         }
+
     }
     /**
      * Método para obtener el valor total del vuelto recibido por el comprador.
