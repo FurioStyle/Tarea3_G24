@@ -68,51 +68,65 @@ public class Expendedor {
      * @throws NoHayProductoException Si no hay más unidades del producto seleccionado.
      */
 
-    public Producto comprarProducto(Moneda m, int cual) throws PagoIncorrectoException, NoHayProductoException   {
-        if (m == null){
-            throw new PagoIncorrectoException("Moneda nula: no se puede realizar el pago");
-        }
-        else{
-            int valor = m.getValor();
-            Producto productoSeleccionado = null;
-            int precio = 0;
-            switch (cual){
-                case 1:
-                    productoSeleccionado = coca.getProducto();
-                    precio = ProductoEnum.COCA_COLA.getPrecio();
-                    break;
-                case 2:
-                    productoSeleccionado = sprite.getProducto();
-                    precio = ProductoEnum.SPRITE.getPrecio();
-                    break;
-                case 3:
-                    productoSeleccionado = fanta.getProducto();
-                    precio = ProductoEnum.FANTA.getPrecio();
-                    break;
-                case 4:
-                    productoSeleccionado = super8.getProducto();
-                    precio = ProductoEnum.SUPER8.getPrecio();
-                    break;
-                case 5:
-                    productoSeleccionado = snickers.getProducto();
-                    precio = ProductoEnum.SNICKERS.getPrecio();
-                    break;
-            }
-            if (valor >= precio) {
-                if (productoSeleccionado != null) {
-                    int vuelto = valor - precio;
-                    entregarVuelto(vuelto);
-                    return productoSeleccionado;
+    public Producto comprarProducto(Moneda m, int cual) throws PagoIncorrectoException, NoHayProductoException {
+        try {
+            if (m == null) {
+                throw new PagoIncorrectoException("Moneda nula: no se puede realizar el pago");
+            } else {
+                int valor = m.getValor();
+                Producto productoSeleccionado = null;
+                int precio = 0;
+                switch (cual) {
+                    case 1:
+                        productoSeleccionado = coca.getProducto();
+                        precio = ProductoEnum.COCA_COLA.getPrecio();
+                        break;
+                    case 2:
+                        productoSeleccionado = sprite.getProducto();
+                        precio = ProductoEnum.SPRITE.getPrecio();
+                        break;
+                    case 3:
+                        productoSeleccionado = fanta.getProducto();
+                        precio = ProductoEnum.FANTA.getPrecio();
+                        break;
+                    case 4:
+                        productoSeleccionado = super8.getProducto();
+                        precio = ProductoEnum.SUPER8.getPrecio();
+                        break;
+                    case 5:
+                        productoSeleccionado = snickers.getProducto();
+                        precio = ProductoEnum.SNICKERS.getPrecio();
+                        break;
                 }
-                else {
+                if (valor >= precio) {
+                    if (productoSeleccionado != null) {
+                        int vuelto = valor - precio;
+                        entregarVuelto(vuelto);
+                        return productoSeleccionado;
+                    } else {
+                        entregarVuelto(valor);
+                        throw new NoHayProductoException("No hay producto");
+                    }
+                } else {
                     entregarVuelto(valor);
-                    throw new NoHayProductoException("No hay producto");
+                    throw new PagoIncorrectoException("No hay dinero suficiente");
                 }
             }
-            else {
-                entregarVuelto(valor);
-                throw new PagoIncorrectoException("No hay dinero suficiente");
+        } catch (PagoIncorrectoException e){
+            int v;
+            System.out.println("Error de pago: " +e.getMessage());
+            if (m != null){
+                v = m.getValor();
             }
+            else{
+                v = 0;
+            }
+            entregarVuelto(v);
+            throw e;
+        } catch (NoHayProductoException e){
+            System.out.println("Eror de producto: " + e.getMessage());
+            entregarVuelto(m.getValor());
+            throw e;
         }
     }
 
