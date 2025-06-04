@@ -122,11 +122,11 @@ public class Expendedor {
                 v = 0;
             }
             entregarVuelto(v);
-            throw e;
+            return null;
         } catch (NoHayProductoException e){
             System.out.println("Eror de producto: " + e.getMessage());
             entregarVuelto(m.getValor());
-            throw e;
+            return null;
         }
     }
 
