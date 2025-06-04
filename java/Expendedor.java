@@ -101,27 +101,38 @@ public class Expendedor {
             if (valor >= precio) {
                 if (productoSeleccionado != null) {
                     int vuelto = valor - precio;
-                    while (vuelto / 100 > 0) {
-                        monedaVuelto.addElemento(new Moneda100());
-                        vuelto -= 100;
-                    }
+                    entregarVuelto(vuelto);
                     return productoSeleccionado;
                 }
                 else {
-                    while (valor/100 > 0) {
-                        monedaVuelto.addElemento(new Moneda100());
-                        valor -= 100;
-                    }
+                    entregarVuelto(valor);
                     throw new NoHayProductoException("No hay producto");
                 }
             }
             else {
-                while (valor/100 > 0) {
-                    monedaVuelto.addElemento(new Moneda100());
-                    valor -= 100;
-                }
+                entregarVuelto(valor);
                 throw new PagoIncorrectoException("No hay dinero suficiente");
             }
+        }
+    }
+
+    /**
+     * Método para calcular la menor cantidad de monedas a devolver en el vuelto.
+     * @param vuelto entero con el valor del vuelto.
+     */
+
+    private void entregarVuelto(int vuelto) {
+        while (vuelto >= 1000) {
+            monedaVuelto.addElemento(new Moneda1000());
+            vuelto -= 1000;
+        }
+        while (vuelto >= 500) {
+            monedaVuelto.addElemento(new Moneda500());
+            vuelto -= 500;
+        }
+        while (vuelto >= 100) {
+            monedaVuelto.addElemento(new Moneda100());
+            vuelto -= 100;
         }
     }
 
