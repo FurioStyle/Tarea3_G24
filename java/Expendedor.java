@@ -124,7 +124,7 @@ public class Expendedor {
             entregarVuelto(v);
             return null;
         } catch (NoHayProductoException e){
-            System.out.println("Eror de producto: " + e.getMessage());
+            System.out.println("Error de producto: " + e.getMessage());
             entregarVuelto(m.getValor());
             return null;
         }
