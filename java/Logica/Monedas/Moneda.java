@@ -1,4 +1,4 @@
-package Monedas;
+package Logica.Monedas;
 /**
  * Clase base para representar una moneda.
  * Cada tipo de moneda debe especificar su valor.

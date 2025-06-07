@@ -1,6 +1,8 @@
-import Excepciones.NoHayProductoException;
-import Excepciones.PagoIncorrectoException;
-import Monedas.*;
+package Logica;
+
+import Logica.Excepciones.NoHayProductoException;
+import Logica.Excepciones.PagoIncorrectoException;
+import Logica.Monedas.*;
 
 
 public class Main {
@@ -25,22 +27,22 @@ public class Main {
         c = new Comprador(m, 5);
         System.out.println(c.queCompraste()+", "+c.cuantoVuelto());
 
-        // Excepciones
+        // Logica.Excepciones
 
         // No hay dinero suficiente
 
-        // m = new Moneda100();
-        // c = new Comprador(m,1);
+        m = new Moneda100();
+        c = new Comprador(m,1);
 
         // Numero Invalido
 
-        // m = new Moneda1000();
-        // c = new Comprador(m,7);
+        m = new Moneda1000();
+        c = new Comprador(m,7);
 
         //Moneda Nula
 
-        // m = null;
-        // c = new Comprador(m,1);
+        m = null;
+        c = new Comprador(m,1);
     }
 }
 

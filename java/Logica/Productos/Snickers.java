@@ -1,4 +1,4 @@
-package Productos;
+package Logica.Productos;
 /**
  * Clase que representa un dulce especifico: Snickers.
  *

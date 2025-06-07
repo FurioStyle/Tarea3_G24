@@ -1,4 +1,4 @@
-package Productos;
+package Logica.Productos;
 /**
  * Clase abstracta que representa una bebida.
  *

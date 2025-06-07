@@ -1,7 +1,9 @@
-import Productos.*;
-import Depositos.*;
-import Monedas.*;
-import Excepciones.*;
+package Logica;
+
+import Logica.Productos.*;
+import Logica.Depositos.*;
+import Logica.Monedas.*;
+import Logica.Excepciones.*;
 /**
  * Clase que simula un expendedor de productos. Permite la compra de bebidas y snacks
  * como CocaCola, Sprite, Fanta, Super8 y Snickers. Los productos están almacenados en depósitos
@@ -157,6 +159,25 @@ public class Expendedor {
      */
     public Moneda getVuelto(){
         return monedaVuelto.getVuelto();
+    }
+    public int getStockCoca() {
+        return coca.size();
+    }
+
+    public int getStockSprite() {
+        return sprite.size();
+    }
+
+    public int getStockFanta() {
+        return fanta.size();
+    }
+
+    public int getStockSuper8() {
+        return super8.size();
+    }
+
+    public int getStockSnickers() {
+        return snickers.size();
     }
 }
 

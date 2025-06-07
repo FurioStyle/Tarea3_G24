@@ -1,4 +1,4 @@
-package Monedas;
+package Logica.Monedas;
 
 public class Moneda500 extends Moneda{
     /**

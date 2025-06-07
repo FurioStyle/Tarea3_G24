@@ -1,4 +1,4 @@
-package Productos;
+package Logica.Productos;
 
 /** Clase abstracta que modela un producto generico, representado con un numero de serie
  */

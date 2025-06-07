@@ -1,4 +1,4 @@
-package Productos;
+package Logica.Productos;
 /**
  * Enumeración que representa distintos tipos de productos disponibles,
  * junto con su precio asociado.

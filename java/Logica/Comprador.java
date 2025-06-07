@@ -1,8 +1,10 @@
-import Excepciones.NoHayProductoException;
-import Excepciones.PagoIncorrectoException;
-import Monedas.*;
-import Productos.Producto;
-import Productos.ProductoEnum;
+package Logica;
+
+import Logica.Excepciones.NoHayProductoException;
+import Logica.Excepciones.PagoIncorrectoException;
+import Logica.Monedas.*;
+import Logica.Productos.Producto;
+
 /**
  * Clase que representa a un comprador que interactúa con el expendedor de productos.
  * El comprador realiza una compra de un producto seleccionando una moneda y un tipo de producto.

@@ -1,7 +1,7 @@
-package Depositos;
+package Logica.Depositos;
 
-import Monedas.Moneda100;
-import Productos.Producto;
+import Logica.Monedas.Moneda100;
+import Logica.Productos.Producto;
 import java.util.ArrayList;
 
 /**
@@ -52,5 +52,8 @@ public class Deposito<T> {
         } else {
             return null;
         }
+    }
+    public int size() {
+        return deposito.size();
     }
 }
