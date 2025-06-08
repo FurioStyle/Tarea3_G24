@@ -1,5 +1,6 @@
 package Logica.Depositos;
 
+import Logica.Monedas.Moneda;
 import Logica.Monedas.Moneda100;
 import Logica.Productos.Producto;
 import java.util.ArrayList;
@@ -46,9 +47,9 @@ public class Deposito<T> {
      *
      * @return una Moneda de 100 si existe o {@code null} si el deposito esta vacio.
      */
-    public Moneda100 getVuelto(){
+    public Moneda getVuelto(){
         if (!deposito.isEmpty()) {
-            return (Moneda100) deposito.remove(0);
+            return (Moneda) deposito.remove(0);
         } else {
             return null;
         }
