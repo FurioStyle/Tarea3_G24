@@ -20,6 +20,6 @@ public class Snickers extends Dulce{
      * @return el String {@code "snickers"}
      */
     public String consumir(){
-        return "snickers";
+        return "Snickers";
     }
 }

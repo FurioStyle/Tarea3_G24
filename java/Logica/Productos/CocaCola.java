@@ -20,7 +20,7 @@ public class CocaCola extends Bebida{
      */
     @Override
     public String consumir(){
-        return "cocacola";
+        return "Coca Cola";
     }
 
 }

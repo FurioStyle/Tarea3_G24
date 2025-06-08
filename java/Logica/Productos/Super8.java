@@ -20,6 +20,6 @@ public class Super8 extends Dulce {
      * @return el String {@code "super8"}
      */
     public String consumir(){
-        return "super8";
+        return "Super 8";
     }
 }

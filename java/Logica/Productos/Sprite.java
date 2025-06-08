@@ -20,6 +20,6 @@ public class Sprite extends Bebida {
      * @return el String {@code "sprite"}
      */
     public String consumir() {
-        return "sprite";
+        return "Sprite";
     }
 }
