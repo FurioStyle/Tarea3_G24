@@ -18,7 +18,7 @@ public class VentanaPrincipal extends JFrame {
     public VentanaPrincipal() {
         setTitle("Máquina Expendedora");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setSize(600, 400);
+        setSize(720, 600);
         setLocationRelativeTo(null);
 
         expendedor = new Expendedor(6);
@@ -49,7 +49,7 @@ public class VentanaPrincipal extends JFrame {
         panelIzquierdo.add(panelComprador);
 
         add(panelIzquierdo, BorderLayout.WEST);
-        add(panelMonedas, BorderLayout.CENTER);
+        add(panelMonedas, BorderLayout.EAST);
 
         setVisible(true);
     }
