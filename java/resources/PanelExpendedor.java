@@ -8,7 +8,7 @@ public class PanelExpendedor extends JPanel {
 
     public PanelExpendedor(Expendedor expendedor) {
         setLayout(new GridLayout(5, 1));
-        setBorder(BorderFactory.createTitledBorder("Stock Logica.Expendedor"));
+        setBorder(BorderFactory.createTitledBorder("Stock del Expendedor"));
 
         cocaLabel = new JLabel("CocaCola: " + expendedor.getStockCoca());
         spriteLabel = new JLabel("Sprite: " + expendedor.getStockSprite());
