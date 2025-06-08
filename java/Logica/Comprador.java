@@ -25,8 +25,7 @@ public class Comprador{
      * @throws NoHayProductoException Si el número de producto es inválido o si no hay stock disponible.
      * @throws PagoIncorrectoException Si el pago no es suficiente para la compra del producto.
      */
-    public Comprador(Moneda m, int cual) throws NoHayProductoException, PagoIncorrectoException {
-        Expendedor exp = new Expendedor(6);
+    public Comprador(Moneda m, int cual, Expendedor exp) throws NoHayProductoException, PagoIncorrectoException {
         Producto p = null;
         try {
             switch (cual) {
