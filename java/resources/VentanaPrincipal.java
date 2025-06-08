@@ -39,16 +39,21 @@ public class VentanaPrincipal extends JFrame {
             vuelto.add(moneda);
         }
 
+        ImageIcon exp = new ImageIcon("java/resources/imagenes/expendedor.png");
+        JLabel e = new JLabel(exp);
+        e.setHorizontalAlignment(JLabel.CENTER);
+
         panelMonedas = new PanelMonedas(vuelto);
 
         setLayout(new BorderLayout());
 
         JPanel panelIzquierdo = new JPanel();
-        panelIzquierdo.setLayout(new GridLayout(2, 1));
+        panelIzquierdo.setLayout(new GridLayout(3, 1));
         panelIzquierdo.add(panelExpendedor);
         panelIzquierdo.add(panelComprador);
 
         add(panelIzquierdo, BorderLayout.WEST);
+        add(e, BorderLayout.CENTER);
         add(panelMonedas, BorderLayout.EAST);
 
         setVisible(true);
