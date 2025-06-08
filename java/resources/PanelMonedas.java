@@ -10,7 +10,7 @@ import java.util.List;
 public class PanelMonedas extends JPanel {
     private DefaultListModel<String> monedasModel;
     private JList<String> monedasList;
-    private int saldo;
+    public int saldo;
     private JLabel dineroLabel;
     private Separador separador = new Separador();
 
@@ -23,7 +23,7 @@ public class PanelMonedas extends JPanel {
         }
 
         monedasList = new JList<>(monedasModel);
-        add(new JScrollPane(monedasList), BorderLayout.EAST);
+        add(new JScrollPane(monedasList), BorderLayout.WEST);
 
 
         JPanel botonesPanel = new JPanel();
@@ -44,21 +44,28 @@ public class PanelMonedas extends JPanel {
         boton2.addActionListener(e -> agregarMoneda(new Moneda500()));
         boton3.addActionListener(e -> agregarMoneda(new Moneda1000()));
 
-        add(botonesPanel, BorderLayout.EAST);
+        add(botonesPanel, BorderLayout.WEST);
 
 
     }
 
     public void agregarMoneda(Moneda m){
         this.saldo += m.getValor();
-        actualizarMonedas();
+        mostrarSaldo();
     }
 
-    public void actualizarMonedas() {
+    public void mostrarSaldo() {
         dineroLabel.setText("Saldo Disponible:" + getSaldo());
     }
 
     public int getSaldo(){
         return saldo;
+    }
+
+    public void actualizarVuelto(List<Moneda> monedas) {
+        monedasModel.clear();
+        for (Moneda m : monedas) {
+            monedasModel.addElement("Moneda: $" + m.getValor());
+        }
     }
 }

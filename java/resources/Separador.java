@@ -6,7 +6,7 @@ public class Separador {
     private JLabel separador;
 
     public Separador(){
-        separador = new JLabel("----------------------------------");
+        separador = new JLabel("--------------------------------------------------");
     }
 
     public JLabel getLabel(){

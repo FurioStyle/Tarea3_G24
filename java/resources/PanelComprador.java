@@ -18,8 +18,8 @@ public class PanelComprador extends JPanel {
         add(vueltoLabel);
     }
 
-    public void actualizarComprador(Comprador comprador) {
+    public void actualizarComprador(Comprador comprador, Expendedor expendedor) {
         productoLabel.setText("Producto comprado: " + comprador.queCompraste());
-        vueltoLabel.setText("Vuelto recibido: $" + comprador.cuantoVuelto());
+        vueltoLabel.setText("Vuelto recibido: $" + expendedor.getVuelto());
     }
 }
