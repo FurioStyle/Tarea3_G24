@@ -9,7 +9,7 @@ public class PanelComprador extends JPanel {
 
     public PanelComprador(Comprador comprador) {
         setLayout(new GridLayout(2, 1));
-        setBorder(BorderFactory.createTitledBorder("Logica.Comprador"));
+        setBorder(BorderFactory.createTitledBorder("Comprador"));
 
         productoLabel = new JLabel("Producto comprado: " + comprador.queCompraste());
         vueltoLabel = new JLabel("Vuelto recibido: $" + comprador.cuantoVuelto());
