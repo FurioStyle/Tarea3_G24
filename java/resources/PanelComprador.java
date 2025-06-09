@@ -24,4 +24,8 @@ public class PanelComprador extends JPanel {
         panelMonedas.agregarSaldo(totalVuelto);
         vueltoLabel.setText("Vuelto recibido: $" + totalVuelto);
     }
+
+    public void empuja(){
+        productoLabel.setText("Producto comprado: Empuja para sacar" );
+    }
 }
