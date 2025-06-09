@@ -12,12 +12,19 @@ public class PanelProductos extends JPanel {
     private final int[] posicionesY = {40, 130, 220, 310, 400}; // Y por tipo
     private Map<String, Image> imagenes = new HashMap<>();
 
+    /**
+     * Carga las imagenes en un array, para administrarlas con mayor facilidad
+     * @param expendedor
+     */
     public PanelProductos(Expendedor expendedor) {
         this.expendedor = expendedor;
         setOpaque(false);
         cargarImagenes();
     }
 
+    /**
+     * busca los nombres de las imagenes en la ruta.
+     */
     private void cargarImagenes() {
         for (String nombre : nombres) {
             ImageIcon icono = new ImageIcon("java/resources/imagenes/" + nombre + ".png");
@@ -25,6 +32,10 @@ public class PanelProductos extends JPanel {
         }
     }
 
+    /**
+     * Override al paintComponent
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -45,6 +56,9 @@ public class PanelProductos extends JPanel {
         }
     }
 
+    /**
+     * Metodo para mostrar todo lo creado.
+     */
     public void actualizar() {
         repaint();
     }
