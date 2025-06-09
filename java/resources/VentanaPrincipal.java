@@ -17,6 +17,7 @@ public class VentanaPrincipal extends JFrame {
     private PanelExpendedor panelExpendedor;
     private PanelComprador panelComprador;
     private PanelMonedas panelMonedas;
+    private JButton consumir;
 
     public VentanaPrincipal() {
         setTitle("Máquina Expendedora");
@@ -80,17 +81,30 @@ public class VentanaPrincipal extends JFrame {
                     Moneda moneda = panelMonedas.monedaVirtual();
                     System.out.println(moneda.getValor());
                     comprador = new Comprador(moneda, numeroProducto, expendedor);
-
-                    List<Moneda> vuelto = new ArrayList<>();
-                    Moneda m = expendedor.getVuelto();
-                    while (m != null){
-                        vuelto.add(m);
-                        m = expendedor.getVuelto();
+                    consumir = new JButton("...");
+                    consumir.setBounds(200, 500, 100, 60);
+                    panelImagen.add(consumir);
+                    if (comprador.queCompraste() != null){
+                        panelComprador.empuja();
                     }
+                    consumir.setVisible(true);
 
+                    consumir.addActionListener(ev ->{
+
+                        List<Moneda> vuelto = new ArrayList<>();
+                        Moneda m = expendedor.getVuelto();
+                        while (m != null){
+                            vuelto.add(m);
+                            m = expendedor.getVuelto();
+                        }
+                        panelComprador.actualizarComprador(comprador, panelMonedas);
+                        panelImagen.remove(consumir);
+                        panelImagen.revalidate();
+                        panelImagen.repaint();
+                        panelMonedas.mostrarSaldo();
+                    });
                     panelExpendedor.actualizarStock(expendedor);
-                    panelComprador.actualizarComprador(comprador, panelMonedas);
-                    panelMonedas.mostrarSaldo(); // Refresca el label
+                    panelMonedas.mostrarSaldo();
 
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(this,
@@ -102,11 +116,5 @@ public class VentanaPrincipal extends JFrame {
             panelImagen.add(boton);
             x += 40;
         }
-    }
-
-
-
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> new VentanaPrincipal());
     }
 }
