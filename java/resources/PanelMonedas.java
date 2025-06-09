@@ -62,6 +62,10 @@ public class PanelMonedas extends JPanel {
         return saldo;
     }
 
+    public void agregarSaldo(int x)
+    {
+        saldo += x;
+    }
     public void quitarSaldo(int x){
         saldo -= x;
     }
