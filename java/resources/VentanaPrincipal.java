@@ -16,7 +16,7 @@ public class VentanaPrincipal extends JFrame {
     private PanelComprador panelComprador;
     private PanelMonedas panelMonedas;
     private JButton consumir, vueltoBoton;
-    private List<List<JLabel>> imagenesProductos = new ArrayList<>();
+    private PanelProductos panelProductos;
 
     public VentanaPrincipal() {
         setTitle("Máquina Expendedora");
@@ -41,24 +41,12 @@ public class VentanaPrincipal extends JFrame {
         BotonesMaquina(panelImagen);
         panelImagen.add(e, Integer.valueOf(0));
         panelMonedas = new PanelMonedas(vuelto);
-        String[] nombres = {"cocacola", "sprite", "fanta", "super8", "snickers"};
-        int[] posicionesY = {40, 130, 220, 310, 400}; // Tus coordenadas Y
-        int posicionX = 60;
 
-        for (int i = 0; i < 5; i++) {
-            ImageIcon iconoOriginal = new ImageIcon("java/resources/imagenes/" + nombres[i] + ".png");
-            Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-            ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+        panelProductos = new PanelProductos(expendedor);
+        panelProductos.setBounds(0, 0, exp.getIconWidth(), exp.getIconHeight());
+        panelImagen.add(panelProductos, Integer.valueOf(1));
 
-            List<JLabel> filaProducto = new ArrayList<>();
-            for (int j = 0; j < 5; j++) {
-                JLabel etiqueta = new JLabel(iconoEscalado);
-                etiqueta.setBounds(posicionX + (50 * j), posicionesY[i], 50, 50);
-                panelImagen.add(etiqueta, Integer.valueOf(1));
-                filaProducto.add(etiqueta);
-            }
-            imagenesProductos.add(filaProducto);
-        }
+
         setLayout(new BorderLayout());
 
         JPanel panelIzquierdo = new JPanel();
@@ -160,19 +148,6 @@ public class VentanaPrincipal extends JFrame {
         }
     }
     public void actualizarImagenesProductos() {
-        int[] stocks = {
-                expendedor.getStockCoca(),
-                expendedor.getStockSprite(),
-                expendedor.getStockFanta(),
-                expendedor.getStockSuper8(),
-                expendedor.getStockSnickers()
-        };
-
-        for (int i = 0; i < 5; i++) {
-            List<JLabel> fila = imagenesProductos.get(i);
-            for (int j = 0; j < fila.size(); j++) {
-                fila.get(j).setVisible(j < stocks[i]);
-            }
-        }
+        panelProductos.actualizar();
     }
 }
