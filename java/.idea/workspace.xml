@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="114219b2-0b66-4dea-b5b8-f56575da73a5" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/Tarea3_G24.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Comprador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Depositos/Deposito.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Excepciones/NoHayProductoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Excepciones/PagoIncorrectoException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Expendedor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Monedas/Moneda.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Monedas/Moneda100.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Monedas/Moneda1000.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Monedas/Moneda500.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Productos/Bebida.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Productos/CocaCola.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Productos/Dulce.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Productos/Fanta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Productos/Producto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Productos/ProductoEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Productos/Snickers.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Productos/Sprite.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Productos/Super8.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/PanelComprador.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/PanelExpendedor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/PanelMonedas.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/ReproductorSonido.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/VentanaPrincipal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/aqui van los recursos graficos.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/imagenes/cocacola.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/imagenes/fanta.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/imagenes/snickers.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/imagenes/sprite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/imagenes/super8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/sonidos/gluglu.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../resources/sonidos/yamyam.mp3" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2yF6mlrUI4NKGKnWyov3ItKrmih" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.VentanaPrincipal.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "kurt",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/kkose/Tarea3_G24/java",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="Tarea3_G24" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="Tarea3_G24" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
+        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="114219b2-0b66-4dea-b5b8-f56575da73a5" name="Changes" comment="" />
+      <created>1749418135440</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1749418135440</updated>
+      <workItem from="1749418136662" duration="10929000" />
+      <workItem from="1749447225605" duration="579000" />
+      <workItem from="1749447839110" duration="67000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
