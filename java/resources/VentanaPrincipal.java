@@ -89,7 +89,7 @@ public class VentanaPrincipal extends JFrame {
                     }
 
                     panelExpendedor.actualizarStock(expendedor);
-                    panelComprador.actualizarComprador(comprador);
+                    panelComprador.actualizarComprador(comprador, panelMonedas);
                     panelMonedas.mostrarSaldo(); // Refresca el label
 
                 } catch (Exception ex) {
