@@ -110,7 +110,6 @@ public class Expendedor {
                         throw new NoHayProductoException("No hay producto");
                     }
                 } else {
-                    entregarVuelto(valor);
                     throw new PagoIncorrectoException("No hay dinero suficiente");
                 }
             }
