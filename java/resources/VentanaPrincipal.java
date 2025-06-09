@@ -35,7 +35,7 @@ public class VentanaPrincipal extends JFrame {
         ImageIcon exp = new ImageIcon("java/resources/imagenes/expendedor.png");
         JLabel e = new JLabel(exp);
         e.setBounds(0, 0, exp.getIconWidth(), exp.getIconHeight());
-
+        System.out.println(exp.getIconWidth()+ " " + exp.getIconHeight());
         JPanel panelImagen = new JPanel(null); // null layout para posicionar manualmente
         BotonesMaquina(panelImagen);
         panelImagen.add(e);
@@ -82,7 +82,7 @@ public class VentanaPrincipal extends JFrame {
                     System.out.println(moneda.getValor());
                     comprador = new Comprador(moneda, numeroProducto, expendedor);
                     consumir = new JButton("...");
-                    consumir.setBounds(200, 500, 100, 60);
+                    consumir.setBounds(25, 510, 300, 110);
                     panelImagen.add(consumir);
                     if (comprador.queCompraste() != null){
                         panelComprador.empuja();
