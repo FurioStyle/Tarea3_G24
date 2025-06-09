@@ -11,12 +11,12 @@ import Logica.Excepciones.*;
  */
 
 public class Expendedor {
-    private Deposito coca;
-    private Deposito sprite;
-    private Deposito fanta;
-    private Deposito monedaVuelto;
-    private Deposito super8;
-    private Deposito snickers;
+    private Deposito<CocaCola> coca;
+    private Deposito<Sprite> sprite;
+    private Deposito<Fanta> fanta;
+    private Deposito<Moneda> monedaVuelto;
+    private Deposito<Super8> super8;
+    private Deposito<Snickers> snickers;
     public int numeroProducto;
     /**
      * Constructor que inicializa el expendedor con una cantidad específica de productos en stock.
@@ -32,26 +32,26 @@ public class Expendedor {
         int serieF = 300;
         int serieSu = 400;
         int serieSn = 500;
-        coca = new Deposito();
+        coca = new Deposito<>();
         for (int i = serieC; i < serieC + numeroProducto; i++) {
             coca.addElemento(new CocaCola(i));
         }
 
-        sprite = new Deposito();
+        sprite = new Deposito<>();
         for (int i = serieS; i < serieS + numeroProducto; i++) {
             sprite.addElemento(new Sprite(i));
         }
-        monedaVuelto = new Deposito();
+        monedaVuelto = new Deposito<>();
 
-        fanta = new Deposito();
+        fanta = new Deposito<>();
         for (int i = serieF; i < serieF + numeroProducto; i++) {
             fanta.addElemento(new Fanta(i));
         }
-        super8 = new Deposito();
+        super8 = new Deposito<>();
         for (int i = serieSu; i < serieSu + numeroProducto; i++) {
             super8.addElemento(new Super8(i));
         }
-        snickers = new Deposito();
+        snickers = new Deposito<>();
         for (int i = serieSn; i < serieSn + numeroProducto; i++) {
             snickers.addElemento(new Snickers(i));
         }
