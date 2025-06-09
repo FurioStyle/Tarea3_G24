@@ -10,7 +10,7 @@ import java.util.List;
 public class PanelMonedas extends JPanel {
     private DefaultListModel<String> monedasModel;
     private JList<String> monedasList;
-    public int saldo;
+    private int saldo = 0;
     private JLabel dineroLabel;
     private Separador separador = new Separador();
 
@@ -62,10 +62,27 @@ public class PanelMonedas extends JPanel {
         return saldo;
     }
 
-    public void actualizarVuelto(List<Moneda> monedas) {
-        monedasModel.clear();
-        for (Moneda m : monedas) {
-            monedasModel.addElement("Moneda: $" + m.getValor());
+    public void quitarSaldo(int x){
+        saldo -= x;
+    }
+
+    public Moneda monedaVirtual(){
+        int m = getSaldo();
+        if(m >= 1000){
+            quitarSaldo(1000);
+            return new Moneda1000();
+        }
+        else if (m >= 500 ){
+            quitarSaldo(500);
+            return new Moneda500();
+        }
+        else if (m >= 100){
+            quitarSaldo(100);
+            return new Moneda100();
+        }
+        else {
+            return null;
         }
     }
+
 }
