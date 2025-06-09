@@ -12,8 +12,8 @@ package Logica.Productos;
     SPRITE(900),
     /** Producto Fanta con precio 900. */
     FANTA(900),
-    /** Producto Super8 con precio 700. */
-    SUPER8(700),
+    /** Producto Super8 con precio 400. */
+    SUPER8(400),
     /** Producto Snickers con precio 800. */
     SNICKERS(800);
 
