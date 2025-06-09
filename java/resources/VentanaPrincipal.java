@@ -25,22 +25,11 @@ public class VentanaPrincipal extends JFrame {
         setLocationRelativeTo(null);
 
         expendedor = new Expendedor(6);
-
-        try {
-            // Usa una moneda que ya tengas, por ejemplo Moneda1000
-            comprador = new Comprador(new Moneda1000(), 1, expendedor);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
         panelExpendedor = new PanelExpendedor(expendedor);
-        panelComprador = new PanelComprador(comprador);
+        panelComprador = new PanelComprador();
 
         List<Moneda> vuelto = new ArrayList<>();
-        Moneda moneda;
-        while ((moneda = expendedor.getVuelto()) != null) {
-            vuelto.add(moneda);
-        }
+
 
         ImageIcon exp = new ImageIcon("java/resources/imagenes/expendedor.png");
         JLabel e = new JLabel(exp);
@@ -88,19 +77,19 @@ public class VentanaPrincipal extends JFrame {
                         throw new PagoIncorrectoException("No has ingresado dinero");
                     }
 
-                    Moneda moneda = MonedaVirtual(panelMonedas);
+                    Moneda moneda = panelMonedas.monedaVirtual();
+                    System.out.println(moneda.getValor());
                     comprador = new Comprador(moneda, numeroProducto, expendedor);
-                    panelComprador.actualizarComprador(comprador, expendedor);
-                    panelExpendedor.actualizarStock(expendedor);
+
                     List<Moneda> vuelto = new ArrayList<>();
-                    Moneda m;
-                    while ((m = expendedor.getVuelto()) != null) {
+                    Moneda m = expendedor.getVuelto();
+                    while (m != null){
                         vuelto.add(m);
+                        m = expendedor.getVuelto();
                     }
 
-                    panelMonedas.actualizarVuelto(vuelto);
-
-                    // Reiniciar saldo tras compra
+                    panelExpendedor.actualizarStock(expendedor);
+                    panelComprador.actualizarComprador(comprador);
                     panelMonedas.mostrarSaldo(); // Refresca el label
 
                 } catch (Exception ex) {
@@ -115,24 +104,7 @@ public class VentanaPrincipal extends JFrame {
         }
     }
 
-    public Moneda MonedaVirtual(PanelMonedas panelMonedas){
-        int m = panelMonedas.getSaldo();
-        if(m >= 1000){
-            panelMonedas.saldo -= 1000;
-            return new Moneda1000();
-        }
-        else if (m >= 500 ){
-            panelMonedas.saldo -= 500;
-            return new Moneda500();
-        }
-        else if (m >= 100){
-            panelMonedas.saldo -= 100;
-            return new Moneda100();
-        }
-        else {
-            return null;
-        }
-    }
+
 
     public static void main(String[] args) {
         SwingUtilities.invokeLater(() -> new VentanaPrincipal());
