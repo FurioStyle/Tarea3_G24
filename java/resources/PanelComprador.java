@@ -26,6 +26,6 @@ public class PanelComprador extends JPanel {
     }
 
     public void empuja(){
-        productoLabel.setText("Producto comprado: Empuja para sacar" );
+        productoLabel.setText("Producto comprado: Retírelo" );
     }
 }
