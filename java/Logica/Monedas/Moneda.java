@@ -13,12 +13,6 @@ public abstract class Moneda implements Comparable<Moneda> {
      */
     public abstract int getValor();
     /**
-     * Devuelve la instancia de la moneda.
-     */
-    public Moneda getSerie() {
-        return this;
-    }
-    /**
      * Compara dos monedas por su valor.
      */
     @Override
