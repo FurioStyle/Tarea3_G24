@@ -7,19 +7,20 @@ public class PanelComprador extends JPanel {
     private JLabel productoLabel;
     private JLabel vueltoLabel;
 
-    public PanelComprador(Comprador comprador) {
+    public PanelComprador() {
         setLayout(new GridLayout(2, 1));
         setBorder(BorderFactory.createTitledBorder("Comprador"));
 
-        productoLabel = new JLabel("Producto comprado: " + comprador.queCompraste());
-        vueltoLabel = new JLabel("Vuelto recibido: $" + comprador.cuantoVuelto());
+        productoLabel = new JLabel("Producto comprado: ");
+        vueltoLabel = new JLabel("Vuelto recibido: ");
 
         add(productoLabel);
         add(vueltoLabel);
     }
 
-    public void actualizarComprador(Comprador comprador, Expendedor expendedor) {
+    public void actualizarComprador(Comprador comprador) {
         productoLabel.setText("Producto comprado: " + comprador.queCompraste());
-        vueltoLabel.setText("Vuelto recibido: $" + expendedor.getVuelto());
+        int totalVuelto = comprador.cuantoVuelto();
+        vueltoLabel.setText("Vuelto recibido: $" + totalVuelto);
     }
 }
