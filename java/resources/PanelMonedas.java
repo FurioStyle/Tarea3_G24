@@ -14,6 +14,11 @@ public class PanelMonedas extends JPanel {
     private JLabel dineroLabel;
     private Separador separador = new Separador();
 
+    /**
+     * Crea un nuevo panel que sirve como monedero, con tres botones para añadir saldo, cada moneda está representada
+     * con un color.
+     * @param monedas recibe una lista de monedas, para obtener su valor.
+     */
     public PanelMonedas(List<Moneda> monedas) {
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createTitledBorder("Monedas"));
@@ -29,7 +34,12 @@ public class PanelMonedas extends JPanel {
         JPanel botonesPanel = new JPanel();
         botonesPanel.setLayout(new GridLayout(5, 1, 5, 5));
 
+        // label con el texto de saldo disponible
+
         dineroLabel = new JLabel("Saldo Disponible:" + getSaldo());
+
+        // botones de monedas
+
         JButton boton1 = new JButton("100");
         boton1.setBackground(Color.RED);
         boton1.setOpaque(true);
@@ -48,6 +58,8 @@ public class PanelMonedas extends JPanel {
         boton3.setBorderPainted(false);
         boton3.setForeground(Color.BLACK);
 
+        // se añade todo
+
         botonesPanel.add(dineroLabel);
         botonesPanel.add(separador.getLabel());
         botonesPanel.add(boton1);
@@ -63,27 +75,58 @@ public class PanelMonedas extends JPanel {
 
     }
 
+    /**
+     * Se toma una moneda, se lee su valor y se agrega al saldo disponible.
+     * @param m Una Moneda.
+     */
     public void agregarMoneda(Moneda m){
-        this.saldo += m.getValor();
-        mostrarSaldo();
+        if (m != null) {
+            this.saldo += m.getValor();
+            mostrarSaldo();
+        } else {
+            this.saldo += 0;
+            mostrarSaldo();
+        }
     }
 
+    /**
+     * Actualiza el saldo disponible mostrado en el panel
+     */
     public void mostrarSaldo() {
         dineroLabel.setText("Saldo Disponible:" + getSaldo());
     }
 
+    /**
+     * Getter simple para obtener el saldo disponible.
+     * @return entero con el saldo.
+     */
     public int getSaldo(){
         return saldo;
     }
 
+    /**
+     * Metodo para agregar saldo de forma externa, usado generalmente para añadir el vuelto al saldo disponible.
+     * @param x un entero con el valor a agregar.
+     */
     public void agregarSaldo(int x)
     {
         saldo += x;
     }
+
+    /**
+     * Metodo usado en la creacion de la MonedaVirtual, donde se descuenta del saldo disponible la moneda que se
+     * va a usar.
+     * @param x entero con el valor a quitar.
+     */
     public void quitarSaldo(int x){
         saldo -= x;
     }
 
+    /**
+     * Crea una moneda Virtual dependiendo del saldo, crea siempre la moneda con mayor valor posible, para
+     * facilitar el proceso de compra
+     * @return una Moneda generada aquí, con el mayor valor posible.
+     */
     public Moneda monedaVirtual(){
         int m = getSaldo();
         if(m >= 1000){
