@@ -31,8 +31,22 @@ public class PanelMonedas extends JPanel {
 
         dineroLabel = new JLabel("Saldo Disponible:" + getSaldo());
         JButton boton1 = new JButton("100");
+        boton1.setBackground(Color.RED);
+        boton1.setOpaque(true);
+        boton1.setBorderPainted(false);
+        boton1.setForeground(Color.BLACK);
+
         JButton boton2 = new JButton("500");
+        boton2.setBackground(Color.YELLOW);
+        boton2.setOpaque(true);
+        boton2.setBorderPainted(false);
+        boton2.setForeground(Color.BLACK);
+
         JButton boton3 = new JButton("1000");
+        boton3.setBackground(Color.GREEN);
+        boton3.setOpaque(true);
+        boton3.setBorderPainted(false);
+        boton3.setForeground(Color.BLACK);
 
         botonesPanel.add(dineroLabel);
         botonesPanel.add(separador.getLabel());
