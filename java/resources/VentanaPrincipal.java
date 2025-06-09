@@ -9,20 +9,28 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Elemento crucial de toda la aplicacion, aquí convergen todos los paneles para mostrarse en pantalla.
+ */
 public class VentanaPrincipal extends JFrame {
     private Expendedor expendedor;
     private Comprador comprador;
     private PanelExpendedor panelExpendedor;
     private PanelComprador panelComprador;
     private PanelMonedas panelMonedas;
-    private JButton consumir, vueltoBoton;
+    private JButton consumir;
     private PanelProductos panelProductos;
 
+    /**
+     * Se llaman los paneles para mostrarlos en pantalla, toma como fondo y panel central una imagen proporcionada por nosotros.
+     */
     public VentanaPrincipal() {
         setTitle("Máquina Expendedora");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(700, 700);
         setLocationRelativeTo(null);
+
+        // Creacion del expendedor y paneles a usar.
 
         expendedor = new Expendedor(6);
         panelExpendedor = new PanelExpendedor(expendedor);
@@ -30,13 +38,14 @@ public class VentanaPrincipal extends JFrame {
 
         List<Moneda> vuelto = new ArrayList<>();
 
-
+        // Setup de la imagen de la expendedora
         ImageIcon exp = new ImageIcon("java/resources/imagenes/expendedor.png");
         JLabel e = new JLabel(exp);
         e.setBounds(0, 0, exp.getIconWidth(), exp.getIconHeight());
         JLayeredPane panelImagen = new JLayeredPane();
         panelImagen.setPreferredSize(new Dimension(exp.getIconWidth(), exp.getIconHeight()));
 
+        // Setup de los paneles a mostrar y los botones de la maquina
         panelImagen.setLayout(null);
         BotonesMaquina(panelImagen);
         panelImagen.add(e, Integer.valueOf(0));
@@ -61,6 +70,11 @@ public class VentanaPrincipal extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Metodo que crea los botones de compra, y el boton para retirar el producto, asi como la creacion de los
+     * buttons de monedas como vuelto.
+     * @param panelImagen panel donde se posicionaran los botones.
+     */
     public void BotonesMaquina(JLayeredPane panelImagen) {
         int y = 0;
         int x = 0;
@@ -87,7 +101,7 @@ public class VentanaPrincipal extends JFrame {
                     Moneda moneda = panelMonedas.monedaVirtual();
                     comprador = new Comprador(moneda, numeroProducto, expendedor);
 
-                    consumir = new JButton("...");
+                    consumir = new JButton("Empuja");
                     consumir.setBounds(25, 510, 300, 110);
                     panelImagen.add(consumir, Integer.valueOf(1));
                     consumir.setVisible(true);
@@ -147,6 +161,10 @@ public class VentanaPrincipal extends JFrame {
             x += 40;
         }
     }
+
+    /**
+     * llama al metodo actualizar en panelProductos para actualizar constantemente el stock mostrado.
+     */
     public void actualizarImagenesProductos() {
         panelProductos.actualizar();
     }
