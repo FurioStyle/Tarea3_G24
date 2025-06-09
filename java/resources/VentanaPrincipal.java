@@ -1,10 +1,8 @@
 package resources;
 
 import Logica.*;
-import Logica.Excepciones.NoHayProductoException;
 import Logica.Excepciones.PagoIncorrectoException;
 import Logica.Monedas.*;
-import Logica.Productos.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +15,8 @@ public class VentanaPrincipal extends JFrame {
     private PanelExpendedor panelExpendedor;
     private PanelComprador panelComprador;
     private PanelMonedas panelMonedas;
-    private JButton consumir;
+    private JButton consumir, vueltoBoton;
+    private List<List<JLabel>> imagenesProductos = new ArrayList<>();
 
     public VentanaPrincipal() {
         setTitle("Máquina Expendedora");
@@ -35,12 +34,31 @@ public class VentanaPrincipal extends JFrame {
         ImageIcon exp = new ImageIcon("java/resources/imagenes/expendedor.png");
         JLabel e = new JLabel(exp);
         e.setBounds(0, 0, exp.getIconWidth(), exp.getIconHeight());
-        System.out.println(exp.getIconWidth()+ " " + exp.getIconHeight());
-        JPanel panelImagen = new JPanel(null); // null layout para posicionar manualmente
-        BotonesMaquina(panelImagen);
-        panelImagen.add(e);
-        panelMonedas = new PanelMonedas(vuelto);
+        JLayeredPane panelImagen = new JLayeredPane();
+        panelImagen.setPreferredSize(new Dimension(exp.getIconWidth(), exp.getIconHeight()));
 
+        panelImagen.setLayout(null);
+        BotonesMaquina(panelImagen);
+        panelImagen.add(e, Integer.valueOf(0));
+        panelMonedas = new PanelMonedas(vuelto);
+        String[] nombres = {"cocacola", "sprite", "fanta", "super8", "snickers"};
+        int[] posicionesY = {40, 130, 220, 310, 400}; // Tus coordenadas Y
+        int posicionX = 60;
+
+        for (int i = 0; i < 5; i++) {
+            ImageIcon iconoOriginal = new ImageIcon("java/resources/imagenes/" + nombres[i] + ".png");
+            Image imagenEscalada = iconoOriginal.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+            ImageIcon iconoEscalado = new ImageIcon(imagenEscalada);
+
+            List<JLabel> filaProducto = new ArrayList<>();
+            for (int j = 0; j < 5; j++) {
+                JLabel etiqueta = new JLabel(iconoEscalado);
+                etiqueta.setBounds(posicionX + (50 * j), posicionesY[i], 50, 50);
+                panelImagen.add(etiqueta, Integer.valueOf(1));
+                filaProducto.add(etiqueta);
+            }
+            imagenesProductos.add(filaProducto);
+        }
         setLayout(new BorderLayout());
 
         JPanel panelIzquierdo = new JPanel();
@@ -55,7 +73,7 @@ public class VentanaPrincipal extends JFrame {
         setVisible(true);
     }
 
-    public void BotonesMaquina(JPanel panelImagen) {
+    public void BotonesMaquina(JLayeredPane panelImagen) {
         int y = 0;
         int x = 0;
 
@@ -79,24 +97,48 @@ public class VentanaPrincipal extends JFrame {
                     }
 
                     Moneda moneda = panelMonedas.monedaVirtual();
-                    System.out.println(moneda.getValor());
                     comprador = new Comprador(moneda, numeroProducto, expendedor);
+
                     consumir = new JButton("...");
                     consumir.setBounds(25, 510, 300, 110);
-                    panelImagen.add(consumir);
-                    if (comprador.queCompraste() != null){
-                        panelComprador.empuja();
-                    }
+                    panelImagen.add(consumir, Integer.valueOf(1));
                     consumir.setVisible(true);
 
-                    consumir.addActionListener(ev ->{
 
-                        List<Moneda> vuelto = new ArrayList<>();
-                        Moneda m = expendedor.getVuelto();
-                        while (m != null){
-                            vuelto.add(m);
-                            m = expendedor.getVuelto();
+                    int separacionVertical = 0;
+                    int vuelto = comprador.cuantoVuelto();
+                    Moneda m;
+                    while ((m = expendedor.getVuelto()) != null) {
+                        separacionVertical += 40;
+                        JButton botonMoneda = new JButton("$" + m.getValor());
+                        botonMoneda.setBounds(350, 500 + separacionVertical, 40, 40);
+                        switch (m.getValor()) {
+                            case (1000):
+                                botonMoneda.setBackground(Color.GREEN);
+                                break;
+                            case (500):
+                                botonMoneda.setBackground(Color.YELLOW);
+                                break;
+                            case (100):
+                                botonMoneda.setBackground(Color.RED);
                         }
+
+                        int valor = m.getValor();
+                        botonMoneda.addActionListener(event -> {
+                            panelMonedas.agregarSaldo(valor);
+                            panelImagen.remove(botonMoneda);
+                            panelImagen.repaint();
+                        });
+
+                        panelImagen.add(botonMoneda, Integer.valueOf(1));
+                    }
+
+                    if (comprador.queCompraste() != null) {
+                        panelComprador.empuja();
+                    }
+
+                    consumir.setVisible(true);
+                    consumir.addActionListener(ev -> {
                         panelComprador.actualizarComprador(comprador, panelMonedas);
                         panelImagen.remove(consumir);
                         panelImagen.revalidate();
@@ -104,7 +146,7 @@ public class VentanaPrincipal extends JFrame {
                         panelMonedas.mostrarSaldo();
                     });
                     panelExpendedor.actualizarStock(expendedor);
-                    panelMonedas.mostrarSaldo();
+                    actualizarImagenesProductos();
 
                 } catch (Exception ex) {
                     JOptionPane.showMessageDialog(this,
@@ -113,8 +155,24 @@ public class VentanaPrincipal extends JFrame {
                 }
             });
 
-            panelImagen.add(boton);
+            panelImagen.add(boton, Integer.valueOf(2));
             x += 40;
+        }
+    }
+    public void actualizarImagenesProductos() {
+        int[] stocks = {
+                expendedor.getStockCoca(),
+                expendedor.getStockSprite(),
+                expendedor.getStockFanta(),
+                expendedor.getStockSuper8(),
+                expendedor.getStockSnickers()
+        };
+
+        for (int i = 0; i < 5; i++) {
+            List<JLabel> fila = imagenesProductos.get(i);
+            for (int j = 0; j < fila.size(); j++) {
+                fila.get(j).setVisible(j < stocks[i]);
+            }
         }
     }
 }
