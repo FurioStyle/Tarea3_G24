@@ -7,6 +7,10 @@ import java.awt.*;
 public class PanelExpendedor extends JPanel {
     private JLabel cocaLabel, spriteLabel, fantaLabel, super8Label, snickersLabel;
 
+    /**
+     * Crea un nuevo panel donde se muestran datos del expendedor, como el stock y el precio de cada item.
+     * @param expendedor expendedor a revisar stock y precio.
+     */
     public PanelExpendedor(Expendedor expendedor) {
         setLayout(new GridLayout(5, 1));
         setBorder(BorderFactory.createTitledBorder("Stock del Expendedor y Coste"));
@@ -24,7 +28,10 @@ public class PanelExpendedor extends JPanel {
         add(snickersLabel);
     }
 
-    // Método para refrescar datos
+    /**
+     * Metodo para actualizar los datos del stock de la máquina.
+     * @param expendedor expendedor a revisar stock.
+     */
     public void actualizarStock(Expendedor expendedor) {
         cocaLabel.setText("CocaCola: " + expendedor.getStockCoca());
         spriteLabel.setText("Sprite: " + expendedor.getStockSprite());
